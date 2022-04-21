@@ -1,6 +1,6 @@
 # Lang-Inject
 
-Applications for repetition of studied foreign words.
+Chrome extension applications for repetition of studied foreign words.
 
 ![Screenshot](screenshot.png)
 
