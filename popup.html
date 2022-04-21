@@ -1,0 +1,210 @@
+<html>
+<title>LangInject</title>
+
+<head>
+    <script src="popup.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <link href='https://fonts.googleapis.com/css?family=Saira Semi Condensed' rel='stylesheet'>
+    <style type="text/css">
+
+        body {
+            font-family: 'Saira Semi Condensed';
+            font-size: 22px;
+        }
+
+
+        .back {
+            position: relative;
+            width: 100%;
+            height: 1.5em;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .button-add {
+            align-self: center;
+            font-family: "Permanent Marker", sans-serif;
+            background-color: #fff;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 1rem;
+            line-height: 23px;
+            outline: none;
+            padding: .55rem;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            touch-action: manipulation;
+            height: 70%;
+            width: 100px;
+        }
+
+        .button-add:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        .button-add:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+
+
+        .button-download {
+            background: #000000;
+            border: 1px solid #fcffff;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.55) 2px 4px 8px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            min-height: 40px;
+            outline: 0;
+            padding: 12px 14px;
+            text-align: center;
+            text-rendering: geometricprecision;
+            text-transform: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+        }
+
+        .button-download:hover,
+        .button-download:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: rgba(0, 0, 0, 0.89);
+        }
+
+        .button-download:active {
+            opacity: .9;
+        }
+
+
+        .button-clear {
+            font-family: "Permanent Marker", sans-serif;
+            align-self: center;
+            position: absolute;
+            right: 1%;
+            background-color: #fff;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgba(212, 0, 39, 0.78);
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: rgba(212, 0, 39, 0.78);
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 23px;
+            outline: none;
+            padding: .55rem;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            touch-action: manipulation;
+            width: 80px;
+        }
+
+        .button-clear:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        .button-clear:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+
+        .button-download {
+            font-family: "Permanent Marker", sans-serif;
+            align-self: center;
+            position: absolute;
+            left: 1%;
+            background-color: #fff;
+            background-image: none;
+            background-position: 0 90%;
+            background-repeat: repeat no-repeat;
+            background-size: 4px 3px;
+            border-radius: 15px 225px 255px 15px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #41403e;;
+            box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+            box-sizing: border-box;
+            color: #41403e;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 23px;
+            outline: none;
+            padding: .55rem;
+            transition: all 235ms ease-in-out;
+            border-bottom-left-radius: 15px 255px;
+            border-bottom-right-radius: 225px 15px;
+            border-top-left-radius: 255px 15px;
+            border-top-right-radius: 15px 225px;
+            touch-action: manipulation;
+            width: 80px;
+        }
+
+        .button-download:hover {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+            transform: translate3d(0, 2px, 0);
+        }
+
+        .button-download:focus {
+            box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+        }
+    </style>
+</head>
+
+
+
+<body class="back">
+<div id="container">
+    <table class="table">
+        <tr>
+            <td>original word</td>
+            <td>replace</td>
+            <td>additional info</td>
+
+        </tr>
+        <tr>
+            <td><input type="text" id="new_word" value="" class="input_word"/></td>
+            <td><input type="text" id="new_translate" value="" class="input_translate"/></td>
+            <td><input type="text" id="new_info" value="" class="input_info"/></td>
+            <td>
+                <button id="add" class="button-add">add</button>
+            </td>
+        </tr>
+
+    </table>
+    <ul></ul>
+    <button id="download" class="button-download">download</button>
+    <button id="clear" class="button-clear">clear</button>
+</div>
+</body>
+</html>
