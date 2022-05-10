@@ -1,7 +1,7 @@
 window.onload = function () {
-    document.getElementById('add').onclick = updateDict;
-    document.getElementById('clear').onclick = clearStorage;
-    document.getElementById('download').onclick = download;
+    document.getElementById('add_btn').onclick = updateDict;
+    document.getElementById('clear_btn').onclick = clearStorage;
+    document.getElementById('download_btn').onclick = download;
 
     async function loadJson() {
         const response = await fetch("./base.json");

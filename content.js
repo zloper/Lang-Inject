@@ -17,7 +17,7 @@ function get(object, key, default_value) {
 
 function processTextBlock(txt, dict) {
     for (page_word of txt.innerHTML.toLowerCase().split(/[., !?"'><)(»«\n\f\t\v]+/)) {
-        console.log(page_word);
+        // console.log(page_word);
         key = page_word.trim();
         value = get(dict, key, null);
         if (!!value){
