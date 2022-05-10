@@ -1,4 +1,4 @@
-// get every word on page logic
+// get every key from dict logic
 const text = document.querySelectorAll('h1, h2, h3, h4, h5, em, span, p, em');
 
 
@@ -10,17 +10,10 @@ function formatAnyRegister(word) {
     return result
 }
 
-function get(object, key, default_value) {
-    var result = object[key];
-    return (typeof result !== "undefined") ? result : default_value;
-}
 
 function processTextBlock(txt, dict) {
-    for (page_word of txt.innerHTML.toLowerCase().split(/[., !?"'><)(»«\n\f\t\v]+/)) {
-        console.log(page_word);
-        key = page_word.trim();
-        value = get(dict, key, null);
-        if (!!value){
+    for (let [key, value] of Object.entries(dict)) {
+        if (txt.innerHTML.toLowerCase().includes(key.toLowerCase())) {
             var values = value.split("::");
             var translate = "";
             if (values.length >= 2) {
@@ -52,6 +45,8 @@ function processTextBlock(txt, dict) {
                     }
 
                 }
+
+                // txt.innerHTML = txt.innerHTML.replace(match, starter + translate + ender)
                 txt.innerHTML = txt.innerHTML.replaceAll(match, starter + translate + ender)
             }
         }
@@ -78,11 +73,14 @@ function replaceText(dict) {
 
 
 async function updatePage() {
-    chrome.storage.sync.get(['vocab'], await function (result) {
-        replaceText(result.vocab);
-        webTelegramReplace(result.vocab);
+    chrome.storage.sync.get(['vocab'], function (result) {
+        replaceDict = result.vocab;
+        replaceText(replaceDict);
+        webTelegramReplace(replaceDict);
     });
 }
+
+// setInterval(updatePage, 10000);
 
 
 async function updatePageTg() {
