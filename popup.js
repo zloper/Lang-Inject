@@ -8,45 +8,50 @@ window.onload = function () {
         return response.json();
     }
 
-    function setStore(data) {
-        chrome.storage.sync.set({vocab: data}, function () {
+    function setWord(data) {
+        chrome.storage.local.set({vocab: data}, function () {
             console.log('Set data... ');
         });
-        chrome.storage.sync.get(['vocab'], function (result) {
+        chrome.storage.local.get(['vocab'], function (result) {
             console.log('result is get to ' + JSON.stringify(result['vocab']));
         });
         document.getElementById('new_word').value = "";
         document.getElementById('new_translate').value = "";
         document.getElementById('new_info').value = "";
-
     }
 
     async function updateDict() {
         json = await loadJson();
-        chrome.storage.sync.get(['vocab'], function (result) {
+        chrome.storage.local.get(['vocab'], function (result) {
             mergedDict = Object.assign(json, result.vocab);
             word = document.getElementById('new_word').value.trim();
             translate = document.getElementById('new_translate').value;
             info = document.getElementById('new_info').value;
             newTranslate = translate + "::" + info + " {" + word + "}";
             mergedDict[word] = newTranslate;
-            setStore(mergedDict)
-
+            setWord(mergedDict)
         });
 
     }
 
     async function clearStorage() {
-        chrome.storage.sync.clear();
+        chrome.storage.local.clear();
         json = await loadJson();
-        setStore(json)
+        setWord(json)
+    }
+
+     async function loadDict() {
+        json = await loadJson();
+        chrome.storage.local.set({vocab: json}, function () {
+            console.log('Set data... ');
+        });
     }
 
     async function download() {
         json = await loadJson();
-        chrome.storage.sync.get(['vocab'], function (result) {
+        chrome.storage.local.get(['vocab'], function (result) {
             mergedDict = Object.assign(json, result.vocab);
-            result = JSON.stringify(mergedDict, null, 4)
+            result = JSON.stringify(mergedDict, null, 4);
             console.log(result);
 
             var vLink = document.createElement('a'),

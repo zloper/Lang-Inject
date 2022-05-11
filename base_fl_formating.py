@@ -19,7 +19,7 @@ def generate_new_dict():
         lemma = morph_w.normal_form
         forms = lexeme_word(lemma)
         lemmatization_vocab[lemma] = forms
-        new_dct[lemma] = dct[key].replace(key, lemma)
+        new_dct[key] = dct[key]
 
         for f in forms:
             new_dct[f] = dct[key].replace(key, f)
@@ -31,6 +31,9 @@ def lexeme_word(word):
     morph_w = morph.parse(word)[0]
     lst = []
     for w in morph_w.lexeme:
+        if 'UnknownPrefixAnalyzer' in str(w.methods_stack) or "FakeDictionary" in str(w.methods_stack):
+            continue
+        print(w)
         lst.append(w.word)
     return lst
 

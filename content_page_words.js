@@ -78,7 +78,8 @@ function replaceText(dict) {
 
 
 async function updatePage() {
-    chrome.storage.sync.get(['vocab'], await function (result) {
+    chrome.storage.local.get(['vocab'], await function (result) {
+        console.log(result.vocab);
         replaceText(result.vocab);
         webTelegramReplace(result.vocab);
     });
@@ -86,9 +87,8 @@ async function updatePage() {
 
 
 async function updatePageTg() {
-    chrome.storage.sync.get(['vocab'], function (result) {
-        replaceDict = result.vocab;
-        webTelegramReplace(replaceDict);
+    chrome.storage.local.get(['vocab'], await function (result) {
+        webTelegramReplace(result.vocab);
     });
 }
 
